@@ -24,7 +24,7 @@
               <div class="col-9">
                 <input
                   type="search"
-                  placeholder="Type a city..."
+                  placeholder="Enter a city..."
                   class="form-control"
                   id="city-input"
                 />
@@ -32,21 +32,29 @@
               <div class="col-3">
                 <input
                   type="submit"
-                  value="search"
+                  value="Search"
                   class="btn btn-primary w-100"
                 />
               </div>
             </div>
           </form>
-          <div class="overview">
-            <h1 id="city"></h1>
-            <ul>
-              <li>Last updated at: <span id="date"></span></li>
-              <li id="weather-description"></li>
-            </ul>
-          </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
+              <h1 id="city">New York County</h1>
+              <ul>
+                <li>
+                  <span id="date"></span>,
+                  <span id="weather-description"></span>
+                </li>
+                <li>
+                  Humidity: <strong><span id="humidity"></span>%</strong>
+                </li>
+                <li>
+                  Wind: <strong><span id="wind-speed"></span> km/h</strong>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-5">
               <div class="d-flex weather-temperature">
                 <img src="" id="icon" alt="" />
                 <strong id="temperature"></strong>
@@ -56,23 +64,32 @@
                 >
               </div>
             </div>
-            <div class="col-md-6">
-              <ul>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Wind: <span id="wind-speed"></span> km/h</li>
-              </ul>
-            </div>
           </div>
           <div class="weather-forecast" id="forecast"></div>
+          <footer>
+            This project was coded by
+            <a
+              href="https://www.lindaltsai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Linda Tsai</a
+            >
+            and is
+            <a
+              href="https://github.com/RingoKTP/vanilla-weather-app"
+              target="_blank"
+              rel="noopener noreferrer"
+              >open-sourced on GitHub</a
+            >
+            and
+            <a
+              href="https://lucent-strudel-a97041.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >hosted on Netlify</a
+            >
+          </footer>
         </div>
-        <small>
-          <a
-            href="https://github.com/RingoKTP/vanilla-weather-app"
-            target="_blank"
-            >Open-source code</a
-          >
-          by Linda Tsai</small
-        >
       </div>
     </div>
     <script src="src/app.js"></script>
