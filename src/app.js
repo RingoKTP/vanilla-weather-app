@@ -27,7 +27,7 @@ function displayForecast(response) {
 
   function formatDay(timestamp) {
     let date = new Date(timestamp * 1000);
-    let day = date.getDate();
+    let day = date.getDay();
     let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
     return days[day];
@@ -38,25 +38,26 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col-2">
-        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-        ${index}
-        <img
-          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-            forecastDay.data.condition.icon
-          }.png"
-          alt=""
-          width="42"
-        />
-        <div class="weather-forecast-temperature">
-          <span class="weather-forecast-temperature-max">${Math.round(
-            forecastDay.temperature.max
-          )}°</span>
-          <span class="weather-forecast-temperature-min">${Math.round(
-            forecastDay.temperature.min
-          )}°</span>
+        <div class="col-2">
+          <div class="weather-forecast-date">${formatDay(
+            forecastDay.time
+          )}</div>
+          <img
+            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+              forecastDay.condition.icon
+            }.png"
+            alt=""
+            width="42"
+          />
+          <div class="weather-forecast-temperature">
+            <span class="weather-forecast-temperature-max">${Math.round(
+              forecastDay.temperature.maximum
+            )}°</span>
+            <span class="weather-forecast-temperature-min">${Math.round(
+              forecastDay.temperature.minimum
+            )}°</span>
+          </div>
         </div>
-      </div>
       `;
     }
   });
