@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let date = new Date(timestamp);
+  let date = new Date();
   let hours = date.getHours();
   let amPM = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
@@ -106,6 +106,14 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+function searchCurrent(cityLocation) {
+  city = cityLocation.data.city;
+  let apiKey = "6b03381b6c536d7a860743b8ced31fot";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
@@ -132,6 +140,17 @@ function displayCelsiusTemperature(event) {
   fahrenheitLink.classList.remove("active");
 }
 
+function showCurrentLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+
+  let apiKey = "6b03381b6c536d7a860743b8ced31fot";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(searchCurrent);
+}
+
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
@@ -143,4 +162,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("New York");
+navigator.geolocation.getCurrentPosition(showCurrentLocation);
